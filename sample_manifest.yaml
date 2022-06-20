@@ -1,0 +1,25 @@
+---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: logger
+      labels:
+        app: logger
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: logger
+      template:
+        metadata:
+          labels:
+            app: logger
+        spec:
+          containers:
+          - name: logger
+            image: mohammedazfar/logger            
+            env:
+            - name: env_name
+              value: "testing"
+            - name: time_interval
+              value: "30"
